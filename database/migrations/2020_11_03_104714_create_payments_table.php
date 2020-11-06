@@ -15,11 +15,10 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->Integer('paymentTypeId');
-            $table->timestamp('paymentDate');
+            $table->bigInteger('paymentTypeId')->unsigned();
+            $table->foreign('paymentTypeId')->references('id')->on('payment_types');
+            $table->timestamp('paymentDate')->nullable();
             $table->decimal('paymentAmount');
-
-            
         });
     }
 

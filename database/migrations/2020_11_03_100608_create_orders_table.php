@@ -15,13 +15,18 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('orderId');
-            $table->bigInteger('userId');
-            $table->bigInteger('postId');
-            $table->bigInteger('paymentId');
+
+            $table->bigInteger('userId')->unsigned();
+            $table->foreign('userId')->references('id')->on('users');
+
+            $table->bigInteger('postId')->unsigned();
+            $table->foreign('postId')->references('id')->on('posts');
+
+            $table->bigInteger('paymentId')->unsigned();
+            $table->foreign('paymentId')->references('id')->on('payments');
             $table->bigInteger('quantity');
-            $table->timestamp('dateCreated');
-            $table->timestamp('dateCompleted')>nullable();
+            $table->timestamps();
+            $table->timestamp('dateCompleted')->nullable();
             $table->timestamps();
         });
     }
