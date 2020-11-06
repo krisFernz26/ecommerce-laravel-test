@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('description');
             $table->timestamps();
             $table->boolean('sold');
+            
         });
     }
 
