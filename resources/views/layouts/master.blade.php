@@ -10,6 +10,18 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -29,7 +41,9 @@
         </div>
     </nav>
 
-    @yield('content')
+    <main>
+        @yield('content')
+    </main>
 
     <footer class="page-footer pink darken-3">
         <div class="container">
