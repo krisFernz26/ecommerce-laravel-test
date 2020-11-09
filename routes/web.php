@@ -18,13 +18,18 @@ Route::get('/', function () {
 });
 
 Route::get('/shop', function(){
-    return view('shop');
+    return view('shop.index');
 });
 
 Route::get('/sign-in', function (){
-    return view('sign_in');
+    return view('sign_in.index');
 });
 
 Route::get('/profile', function(){
-    return view('profile');
+    return view('profile.index');
+});
+
+
+Route::get('/orders', function(){
+    return view('order.index');
 });
