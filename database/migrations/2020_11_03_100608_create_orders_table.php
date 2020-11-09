@@ -27,7 +27,6 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('quantity');
             $table->timestamps();
             $table->timestamp('dateCompleted')->nullable();
-            $table->timestamps();
         });
     }
 
