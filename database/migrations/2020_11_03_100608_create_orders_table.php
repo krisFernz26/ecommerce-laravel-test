@@ -16,17 +16,17 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('userId')->unsigned();
-            $table->foreign('userId')->references('id')->on('users');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
 
-            $table->bigInteger('postId')->unsigned();
-            $table->foreign('postId')->references('id')->on('posts');
+            $table->bigInteger('post_id')->unsigned();
+            $table->foreign('post_id')->references('id')->on('posts');
 
-            $table->bigInteger('paymentId')->unsigned();
-            $table->foreign('paymentId')->references('id')->on('payments');
+            $table->bigInteger('payment_id')->unsigned();
+            $table->foreign('payment_id')->references('id')->on('payments');
             $table->bigInteger('quantity');
             $table->timestamps();
-            $table->timestamp('dateCompleted')->nullable();
+            $table->timestamp('date_completed')->nullable();
         });
     }
 
