@@ -2,17 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+Route:: get('/','EventsController@index');
+Route:: get('/events/{event}','EventsController@show');
+Route:: get('/events/create','EventsController@create');
+//GET /events/create display the create from
+//GET /events/{event}/update the update form
+//POST /events store a record
+//POST /events/{event} update a record
+//DELETE/ events/{event} delete a record
 Route::get('/', function () {
     return view('welcome');
 });
@@ -33,3 +30,17 @@ Route::get('/profile', function(){
 Route::get('/orders', function(){
     return view('order.index');
 });
+//index
+Route::get('/payments','PaymentsController@index');
+//create
+Route::post('/payments/create','PaymentsController@create');
+//show
+Route::get('/payments/{payment}','PaymentsController@show');
+//store
+Route::post('/payments/create','PaymentsController@store');
+//edit
+Route::get('/payments/{payment}/edit','PaymentsController@edit');
+//update	
+Route::put('/payments/{payment}','PaymentsController@update');
+//delete
+Route::get('/payments/{payment}/delete','PaymentsController@delete');
