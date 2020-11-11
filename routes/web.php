@@ -33,3 +33,24 @@ Route::get('/profile', function(){
 Route::get('/orders', function(){
     return view('order.index');
 });
+
+//index
+Route::get('/products', 'ProductsController@index');
+
+//create
+Route::post('/products/create', 'ProductsController@create');
+
+//show
+Route::get('/products/{product}', 'ProductsController@show');
+
+//store
+Route::post('/products', 'ProductsController@store');
+
+//edit
+Route::get('/products/{product}/edit', 'ProductsControlle@edit');
+
+//update
+Route::put('products/{product}', 'ProductsController@update');
+
+//delete
+Route::get('products/{product}/delete', 'ProductsController@delete');
