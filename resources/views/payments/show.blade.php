@@ -6,11 +6,10 @@
             <div class="col s12">
                 <div class="card pink darken-1">
                     <div class="card-content white-text">
-                        <span class="card-title">{{ $payment -> name }}</span>
-                        <h6 style="margin-left: 1em">Payment Type ID:</h6>
-                        <p style="margin-left: 2em">{{ $payment ->  id }}</p>
-                        <h6 style="margin-left: 1em">Description:</h6>
-                        <p style="margin-left: 2em">{{ $payment -> description }}</p>
+                        <h6 style="margin-left: 1em">Payment Type ID:{{ $payment ->  id }}</h6>
+                        <p style="margin-left: 2em">{{ $payment ->  payment_date }}</p>
+                        <h6 style="margin-left: 1em">{{ $payment ->  payment_amount }}</h6>
+                        
                     </div>
                     <div class="card-action pink darken-3">
                         <a class="pink-text text-lighten-5" href="/user-types/{{$payment->id}}/edit">Edit</a>

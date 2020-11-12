@@ -76,7 +76,6 @@ Route::get('/payments/{payment}', 'PaymentsController@show');
 Route::post('/payments', 'PaymentsController@store');
 //Edit
 Route::get('/payments/{payment}/edit','PaymentsController@edit');
-
 // Update
 Route::put('/payments/{payment}', 'PaymentsController@update');
 // Display deletion screen

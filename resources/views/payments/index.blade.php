@@ -31,5 +31,7 @@
 		</tbody>
 		</table>
 	</div>
+        <a href="/payments/create">Create payments</a>
+
 	</div>
 @endsection

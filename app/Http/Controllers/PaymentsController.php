@@ -15,41 +15,45 @@ class PaymentsController extends Controller
     	return view ('payments.index', compact('payments'));
 
      }
-     public function show(Payment $payment)
-     {
-     	return view('payments.show', compact('payment'));
-     }
      public function create()
      {
-        $payment_type_id = ['Cash','Card','Online Payment']; 
-     	return view('payments.create', compact('payment_type_id'));
+        
+        return view('payments.create');
+     }
+     public function show(Payment $paymentId)
+     {
+        $payment = Payment::find($paymentId);
+     	return view('payments.show', compact('payment'));
+     }
+     public function edit(Payment $paymentId)
+     {
+        $payment = Payment::find($paymentId);
+        return view('payments.edit',compact('payment'));
+
      }
      public function store()
      {
         $payment = new Payment;
-        $payment->payment_type_id = Payment::find(request()->payment_type_id)->id;
+        $payment->payment_type_id = request()->payment_types->id;
         $payment->payment_amount = request()->payment_amount;
+        $payment->payment_type_id = PaymentType::find(request()->payment_types)->id;
         $payment->save();
         return redirect ('/payments'); 
 
      }
-     public function edit(Payment $payment)
-     {
-        $paymentTypeId = ['Cash','Card','Online Payment']; 
-        return view('payments.edit',compact('payment','paymentTypeId'));
-
-     }
-
+     
     public function update(User $payment){
 
-        $payment->payment_type_id = request()->payment_type_id;
+        $payment = new Payment;
+        $payment->payment_type_id = request()->payment_types->id;
         $payment->payment_amount = request()->payment_amount;
-        $user->save();
-        return redirect('/payments/'.$payment->id);
+        $payment->payment_type_id = PaymentType::find(request()->payment_types)->id;
+        $payment->save();
+        return redirect ('/payments'.$payment->id); 
     }
 
     public function delete($paymentId){
-        $user = Payment::find($paymentId);
+        $payment = Payment::find($paymentId);
         return view('payments.delete', compact('payment'));
     }
 

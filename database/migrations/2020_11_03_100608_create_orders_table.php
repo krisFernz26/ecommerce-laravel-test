@@ -26,7 +26,11 @@ class CreateOrdersTable extends Migration
             $table->foreign('payment_id')->references('id')->on('payments');
             $table->bigInteger('quantity');
             $table->timestamps();
+<<<<<<< HEAD
             $table->timestamp('date_completed')->nullable();
+=======
+            $table->timestamp('dateCompleted')->nullable();
+>>>>>>> 48b510ef9507b74112ad4a5347c094e8cd39abc8
         });
     }
 
