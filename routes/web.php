@@ -73,15 +73,6 @@ Route::get('posts/{post}/delete', 'PostsController@delete');
 // Delete a post record
 Route::delete('/posts/{post}', 'PostsController@destroy');
 
-Route::get('/profile', function(){
-    return view('profile.index');
-});
-
-
-Route::get('/orders', function(){
-    return view('order.index');
-});
-
 //index
 Route::get('/products', 'ProductsController@index');
 
@@ -99,6 +90,23 @@ Route::get('/products/{product}/edit', 'ProductsControlle@edit');
 
 //update
 Route::put('products/{product}', 'ProductsController@update');
-
 //delete
 Route::get('products/{product}/delete', 'ProductsController@delete');
+
+
+//Display all Payments
+Route::get('/payments', 'PaymentsController@index');
+//Create payment form
+Route::get('/payments/create', 'PaymentsController@create');
+//Show - Display
+Route::get('/payments/{payment}', 'PaymentsController@show');
+//Store
+Route::post('/payments', 'PaymentsController@store');
+//Edit
+Route::get('/payments/{payment}/edit','PaymentsController@edit');
+// Update
+Route::put('/payments/{payment}', 'PaymentsController@update');
+// Display deletion screen
+Route::get('payments/{payment}/delete', 'PaymentsController@delete');
+// Delete a payment record
+Route::delete('/payments/{payment}', 'PaymentsController@destroy');
