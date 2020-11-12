@@ -2,14 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route:: get('/','EventsController@index');
-Route:: get('/events/{event}','EventsController@show');
-Route:: get('/events/create','EventsController@create');
-//GET /events/create display the create from
-//GET /events/{event}/update the update form
-//POST /events store a record
-//POST /events/{event} update a record
-//DELETE/ events/{event} delete a record
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,7 +10,7 @@ Route::get('/shop', function(){
     return view('shop.index');
 });
 
-
+/** Users */
 // Display all Users
 Route::get('/users', 'UsersController@index');
 // Display Create User form
@@ -36,6 +28,7 @@ Route::get('users/{user}/delete', 'UsersController@delete');
 // Delete a user record
 Route::delete('/users/{user}', 'UsersController@destroy');
 
+/** User Types */
 // Display all User Types
 Route::get('/user-types', 'UserTypesController@index');
 // Display Create User Type form
@@ -53,6 +46,7 @@ Route::get('user-types/{userType}/delete', 'UserTypesController@delete');
 // Delete a user type record
 Route::delete('/user-types/{userType}', 'UserTypesController@destroy');
 
+/** Posts */
 // Display all Posts
 Route::get('/posts', 'PostsController@index');
 // Display Create Post form
@@ -70,27 +64,23 @@ Route::get('posts/{post}/delete', 'PostsController@delete');
 // Delete a post record
 Route::delete('/posts/{post}', 'PostsController@destroy');
 
+/** Products */
 //index
 Route::get('/products', 'ProductsController@index');
-
 //create
 Route::post('/products/create', 'ProductsController@create');
-
 //show
 Route::get('/products/{product}', 'ProductsController@show');
-
 //store
 Route::post('/products', 'ProductsController@store');
-
 //edit
 Route::get('/products/{product}/edit', 'ProductsControlle@edit');
-
 //update
 Route::put('products/{product}', 'ProductsController@update');
 //delete
 Route::get('products/{product}/delete', 'ProductsController@delete');
 
-
+/** Payments */
 //Display all Payments
 Route::get('/payments', 'PaymentsController@index');
 //Create payment form
@@ -108,7 +98,7 @@ Route::get('payments/{payment}/delete', 'PaymentsController@delete');
 // Delete a payment record
 Route::delete('/payments/{payment}', 'PaymentsController@destroy');
 
-
+/** Payment Types */
 //index
 Route::get('/payments','PaymentsController@index');
 //create
@@ -123,3 +113,6 @@ Route::get('/payments/{payment}/edit','PaymentsController@edit');
 Route::put('/payments/{payment}','PaymentsController@update');
 //delete
 Route::get('/payments/{payment}/delete','PaymentsController@delete');
+
+
+/** Orders */
