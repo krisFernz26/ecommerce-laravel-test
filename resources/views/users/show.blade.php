@@ -12,6 +12,8 @@
                         <p style="margin-left: 2em">{{ $user ->  email }}</p>
                         <h6 style="margin-left: 1em">Address:</h6>
                         <p style="margin-left: 2em">{{ $user -> address }}</p>
+                        <h6 style="margin-left: 1em">User Type ID:</h6>
+                        <p style="margin-left: 2em">{{ $user -> user_type_id }}</p>
                     </div>
                     <div class="card-action pink darken-3">
                         <a class="pink-text text-lighten-5" href="/users/{{$user->id}}/edit">Edit</a>

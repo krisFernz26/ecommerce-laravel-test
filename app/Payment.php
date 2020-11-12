@@ -10,6 +10,10 @@ class Payment extends Model
     public $timestamps = false;
 
     public function payment_type(){
-        return $this->belongsTo('App\User');
+        return $this->hasOne('App\PaymentType', 'payment_type_id');
+    }
+
+    public function order(){
+        return $this->belongsTo('\App\Order', 'order_id');
     }
 }

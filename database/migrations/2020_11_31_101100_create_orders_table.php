@@ -19,12 +19,17 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
 
+            $table->string('user');
+
             $table->bigInteger('post_id')->unsigned();
             $table->foreign('post_id')->references('id')->on('posts');
 
-            $table->bigInteger('payment_id')->unsigned();
+            $table->string('post_title');
+
+            $table->bigInteger('payment_id')->unsigned()->nullable();
             $table->foreign('payment_id')->references('id')->on('payments');
-            $table->bigInteger('quantity');
+
+            $table->Integer('quantity');
             $table->timestamps();
             
             $table->timestamp('date_completed')->nullable();

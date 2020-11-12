@@ -3,10 +3,10 @@
 @section('content')
 <div class="container">
     <div class="section">
-        <h5 class="center-align">Delete Post "{{$post->title}}"</h5>
+        <h5 class="center-align">Delete Payment Type {{$paymentType->name}}</h5>
         <div class="row"></div>
         <div class="row">
-            <form class="col s12" action="/posts/{{$post->id}}" method="POST">
+            <form class="col s12" action="/payment-types/{{$paymentType->id}}" method="POST">
                 @method('DELETE')
                 @csrf
                 <div class="row">

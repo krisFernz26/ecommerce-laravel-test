@@ -8,7 +8,7 @@
         <ol>
             @foreach ($posts as $post)
             <li>
-                <a target="_blank" href="/posts/{{$post->id}}">{{$post->name}}</a>
+                <a target="_blank" href="/posts/{{$post->id}}">{{$post->title}}</a>
             </li>
             @endforeach
         </ol>

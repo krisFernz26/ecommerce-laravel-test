@@ -27,7 +27,7 @@
 <body>
     <nav class="white" role="navigation">
         <div class="nav-wrapper container ">
-            <a id="logo-container" href="/" class="brand-logo">Group 7</a>
+            <!-- <a id="logo-container" href="/" class="brand-logo">Group 7</a> -->
             <ul class="right hide-on-med-and-down">
                 @include('layouts.navigation')
             </ul>
@@ -72,6 +72,7 @@
         $(document).ready(function(){
             $('select').formSelect();
         });
+        
     </script>
 </body>
 

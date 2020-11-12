@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
+use App\Product;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -13,32 +15,37 @@ class PostsController extends Controller
     	return view('post.index' , compact('posts'));
     }
     public function create(){
-        //$users = User::all();
-        $post = Post::all();
-        return view('post.create', compact('users'));
+        $users = User::all();
+        $products = Product::all();
+        return view('post.create', compact('users', 'products'));
     }
 
     
     public function show($postId){
-        $posts = Post::find($postId);
-        return view('post.show', compact('posts'));
+        $post = Post::find($postId);
+        return view('post.show', compact('post'));
     }
 
     
     public function edit($postId){
-        $posts = Post::find($postId);
-        return view('post.edit', compact('posts'));
+        $post = Post::find($postId);
+        $users = User::all();
+        $products = Product::all();
+        return view('post.edit', compact('post', 'users', 'products'));
     }
 
     
     public function store(){
 
-        // Create a new User
+        // Create a new Post
         $post = new Post;
         $post->title = request()->title;
         $post->description = request()->description;
-        //$post->user_id = User::find(request()->user_id)->id;
-        //$post->product_id = Product::find(request()->product_id)->id;
+        $post->user_id = User::find(request()->user_id)->id;
+        $post->user = User::find(request()->user_id)->email;
+        $post->product_id = Product::find(request()->product_id)->id;
+        $post->image = Product::find(request()->product_id)->image;
+        $post->sold = false;
         $post->save();
 
         return redirect('/posts');
@@ -48,8 +55,11 @@ class PostsController extends Controller
 
         $post->title = request()->title;
         $post->description = request()->description;
-        //$post->user_id = User::find(request()->user_id)->id;
-        //$post->product_id = Product::find(request()->product_id)->id;
+        $post->user_id = User::find(request()->user_id)->id;
+        $post->user = User::find(request()->user_id)->email;
+        $post->product_id = Product::find(request()->product_id)->id;
+        $post->image = Product::find(request()->product_id)->image;
+        $post->sold = request()->sold;
         $post->save();
 
         return redirect('/posts/'.$post->id);

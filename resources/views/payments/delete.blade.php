@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="section">
-        <h5 class="center-align">Delete Payment</h5>
+        <h5 class="center-align">Delete Payment {{$payment->name}}</h5>
         <div class="row"></div>
         <div class="row">
             <form class="col s12" action="/payments/{{$payment->id}}" method="POST">

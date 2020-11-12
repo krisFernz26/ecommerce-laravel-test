@@ -11,4 +11,12 @@ class User extends Model
     public function userType(){
         return $this->hasOne('\App\UserType', 'user_type_id');
     }
+
+    public function post(){
+        return $this->belongsTo('\App\Post');
+    }
+
+    public function order(){
+        return $this->belongsTo('\App\Order');
+    }
 }

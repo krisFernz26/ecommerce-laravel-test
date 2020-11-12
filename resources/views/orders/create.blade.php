@@ -3,20 +3,20 @@
 @section('content')
 <div class="container">
     <div class="section">
-        <h5>Create Post</h5>
+        <h5>Create Order</h5>
         <h5>(Note: Authentication will come later)</h5>
         <div class="row"></div>
         <div class="row">
-            <form class="col s12" action="/posts" method="POST">
+            <form class="col s12" action="/orders" method="POST">
                 @csrf
                 <div class="row">
-                    <div class="input-field col s12">
-                        <input placeholder="Placeholder" id="title" type="text" class="validate" name="title">
-                        <label for="title">Title</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="description" type="text" class="validate" name="description">
-                        <label for="description">Description</label>
+                    <div class="input-field col s5">
+                        <select name="quantity" id="quantity">
+                            @foreach($quantities as $quantity)
+                            <option value="{{ $quantity }}">{{ $quantity }}</option>
+                            @endforeach
+                        </select>
+                        <label>Order Quantity</label>
                     </div>
                 </div>
                 <div class="row">
@@ -26,15 +26,16 @@
                             <option value="{{$user->id}}">{{$user->first_name}} {{$user->last_name}}</option>
                             @endforeach
                         </select>
-                        <label>User:</label>
+                        <label>User</label>
                     </div>
                     <div class="input-field col s6">
-                        <select id="product" name="product_id">
-                            @foreach ($products as $product)
-                            <option value="{{$product->id}}">{{$product->name}}: {{$product->quantity}}</option>
+                        <select id="post" name="post_id">
+                            @foreach ($posts as $post)
+                            <option value="{{$post->id}}">Title: {{$post->title}}
+                            </option>
                             @endforeach
                         </select>
-                        <label>Product</label>
+                        <label>Post</label>
                     </div>
                 </div>
                 <div class="row">
