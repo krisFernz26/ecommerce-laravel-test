@@ -4,6 +4,18 @@
 <div class="container">
     <div class="section">
         <h5>Welcome</h5>
+        <ol>
+            <li>Create Types (<a href="/user-types" target="_blank">Users</a>,
+                <a href="/payment-types" target="_blank">Payments</a>,
+                <a href="/product-types" target="_blank">Products</a>
+                )</li>
+            <li>Create <a href="/users" target="_blank">User</a></li>
+            <li>Create <a href="/products" target="_blank">Product</a></li>
+            <li>Create <a href="/posts" target="_blank">Post</a></li>
+            <li>Create <a href="/orders" target="_blank">Order</a></li>
+            <li>Create <a href="/payments" target="_blank">Payment</a></li>
+        </ol>
+        <p>(Note: Links on the list will open a new tab)</p>
     </div>
 </div>
 @endsection
