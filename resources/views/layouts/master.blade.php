@@ -30,6 +30,7 @@
             <!-- <a id="logo-container" href="/" class="brand-logo">Group 7</a> -->
             <ul class="right hide-on-med-and-down">
                 @include('layouts.navigation')
+
             </ul>
 
             <!-- Mobile -->

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\User;
 use App\UserType;
 use Illuminate\Http\Request;
@@ -40,27 +41,33 @@ class UsersController extends Controller
     public function store(){
 
         // Create a new User
-        $user = new User;
-        $user->first_name = request()->first_name;
-        $user->last_name = request()->last_name;
-        $user->email = request()->email;
-        $user->password = request()->password;
-        $user->address = request()->address;
-        $user->user_type_id = UserType::find(request()->user_type_id)->id;
-        $user->save();
+        $validated_fields = request()->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required',
+            'address' => 'required',
+            'user_type_id' => 'required'
+        ]);
+
+        $user = User::create($validated_fields);
 
         return redirect('/users');
     }
 
     public function update(User $user){
 
-        $user->first_name = request()->first_name;
-        $user->last_name = request()->last_name;
-        $user->email = request()->email;
-        $user->password = request()->password;
-        $user->address = request()->address;
-        $user->user_type_id = UserType::find(request()->user_type_id)->id;
-        $user->save();
+        
+        $validated_fields = request()->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required',
+            'address' => 'required',
+            'user_type_id' => 'required'
+        ]);
+
+        $user = User::update($validated_fields);
 
         return redirect('/users/'.$user->id);
     }

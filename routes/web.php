@@ -10,11 +10,16 @@ Route::get('/shop', function(){
     return view('shop.index');
 });
 
+/**
+ * 
+ * CRUD Routes
+ * 
+ */
 /** Users */
 // Display all Users
 Route::get('/users', 'UsersController@index');
 // Display Create User form
-Route::get('/users/create', 'UsersController@create');
+// Route::get('/users/create', 'UsersController@create');
 // Display User
 Route::get('/users/{user}', 'UsersController@show');
 // Display Update User form
@@ -46,6 +51,12 @@ Route::get('user-types/{userType}/delete', 'UserTypesController@delete');
 // Delete a user type record
 Route::delete('/user-types/{userType}', 'UserTypesController@destroy');
 
+/**
+ * 
+ * Authenticated Routes
+ * 
+ */
+Route::middleware(['auth'])->group(function(){
 /** Posts */
 // Display all Posts
 Route::get('/posts', 'PostsController@index');
@@ -147,3 +158,15 @@ Route::post('/orders', 'OrdersController@store');
 Route::put('/orders/{order}', 'OrdersController@update');
 Route::get('/orders/{order}/delete', 'OrdersController@delete');
 Route::delete('/orders/{order}', 'OrdersController@destroy');
+});
+
+/**
+ * 
+ * Auth Routes
+ * 
+ */
+Route::get('/login', 'AuthController@index')->name('login');
+Route::post('/login', 'AuthController@login');
+Route::get('/logout', 'AuthController@logout')->middleware('auth');
+
+Route::get('/register', 'UsersController@create');

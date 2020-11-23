@@ -7,38 +7,40 @@
         <div class="row"></div>
         <div class="row">
             <form class="col s12" action="/users" method="POST">
+                @include('layouts.errors')
                 @csrf
                 <div class="row">
                     <div class="input-field col s6">
-                        <input placeholder="Placeholder" id="first_name" type="text" class="validate" name="first_name">
+                        <input required placeholder="Placeholder" id="first_name" type="text" class="validate"
+                            name="first_name">
                         <label for="first_name">First Name</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="last_name" type="text" class="validate" name="last_name">
+                        <input required id="last_name" type="text" class="validate" name="last_name">
                         <label for="last_name">Last Name</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="email" type="email" class="validate" name="email">
+                        <input required id="email" type="email" class="validate" name="email">
                         <label for="email">Email</label>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="password" type="password" class="validate" name="password">
+                            <input required id="password" type="password" class="validate" name="password">
                             <label for="password">Password</label>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="address" type="text" class="validate" name="address">
+                        <input required id="address" type="text" class="validate" name="address">
                         <label for="address">Address</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <select id="user-types" name="user_type_id">
+                        <select id="user-types" name="user_type_id" required>
                             @foreach ($userTypes as $userType)
                             <option value="{{$userType->id}}">{{$userType->name}}: {{$userType->description}}</option>
                             @endforeach
