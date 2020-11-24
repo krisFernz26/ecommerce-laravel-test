@@ -16,16 +16,20 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             
-            $table->bigInteger('productId')->unsigned();
-            $table->foreign('productId')->references('id')->on('products');
+            $table->bigInteger('product_id')->unsigned();
+            $table->foreign('product_id')->references('id')->on('products');
 
-            $table->bigInteger('userId')->unsigned();
-            $table->foreign('userId')->references('id')->on('users');
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+
+            
+            $table->string('user');
+            $table->string('image');
 
             $table->string('title');
             $table->string('description');
             $table->timestamps();
-            $table->boolean('sold');
+            $table->boolean('sold')->default(false);
             
         });
     }

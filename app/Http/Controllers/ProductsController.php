@@ -61,6 +61,8 @@ class ProductsController extends Controller
         $products->save();
         return redirect('/products');
         */
+
+        return redirect('/products');
     }
 
     public function update(Product $product){
@@ -81,8 +83,7 @@ class ProductsController extends Controller
         $product->product_type_id = ProductType::find(request()->product_type_id)->id;
         $product->save();
 
-        return redirect('/products/'.$product->id);
-        */
+        return redirect('/products/'.$product->id);        */
     }
 
     public function delete($productId){
