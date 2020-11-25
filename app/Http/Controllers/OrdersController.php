@@ -37,6 +37,16 @@ class OrdersController extends Controller
 	}
 
     public function store(){
+
+    	//validate the form
+    	$validate_fields = request()->validate([
+    		'quantity' => 'required'
+    		'user_id' => 'required'
+    		'post_title' => 'required'
+    		'user' => 'required'
+    		'post_id' => 'required',
+    	]);
+
     	$order = new Order;
     	$order->quantity = request()->quantity;
 		$order->user_id = User::find(request()->user_id)->id;
@@ -49,6 +59,15 @@ class OrdersController extends Controller
     }
 
      public function update(Order $order){
+
+     	//validate
+    	$validate_fields = request()->validate([
+    		'quantity' => 'required'
+    		'user_id' => 'required'
+    		'post_title' => 'required'
+    		'user' => 'required'
+    		'post_id' => 'required',
+    	]);
     	
     	$order->quantity = request()->quantity;
         $order->user_id = User::find(request()->user_id)->id;
