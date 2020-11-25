@@ -3,14 +3,15 @@
 <div class="container">
 	<h5>Products Form </h5>
 	<form method=POST action="/products">
+		@include('layouts.errors')
 		@csrf
 		<div class="row">
 			<div class="input-field col s6">
-				<input placeholder="Product Name" id="product_name" type="text" class="validate" name="name">
+				<input placeholder="Product Name" required id="product_name" type="text" class="validate" name="name">
 				<label for="product_name">Product Name</label>
 			</div>
 			<div class="input-field col s6">
-				<select name="quantity" id="quantity">
+				<select name="quantity" required id="quantity">
 					@foreach($quantities as $quantity)
 					<option value="{{ $quantity }}">{{ $quantity }}</option>
 					@endforeach
@@ -20,13 +21,13 @@
 		</div>
 		<div class="row">
 			<div class="input-field col s12">
-				<input placeholder="Image Url" id="image" type="text" class="validate" name="image">
+				<input placeholder="Image Url" required id="image" type="text" class="validate" name="image">
 				<label for="product_name">Image URL</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="input-field col s12">
-				<select id="product-types" name="product_type_id">
+				<select id="product-types" required name="product_type_id">
 					@foreach ($productTypes as $productType)
 					<option value="{{$productType->id}}">{{$productType->name}}: {{$productType->description}}</option>
 					@endforeach
