@@ -49,7 +49,9 @@ class OrdersController extends Controller
 		$order->post_title = Post::find(request()->post_id)->title;
         $order->user = User::find(request()->user_id)->email;
         $order->post_id = Post::find(request()->post_id)->id;
-    	$order->save();
+		$order->save();
+		
+		Post::find(request()->post_id)->sold = true;
 
     	return redirect('/orders');
     }

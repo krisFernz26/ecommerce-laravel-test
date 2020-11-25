@@ -18,11 +18,11 @@ class User extends Authenticatable
     }
 
     public function post(){
-        return $this->belongsTo('\App\Post');
+        return $this->hasMany('\App\Post');
     }
 
     public function order(){
-        return $this->belongsTo('\App\Order');
+        return $this->hasMany('\App\Order');
     }
 
     public function setPasswordAttribute($value)
