@@ -8,6 +8,10 @@ class Post extends Model
 {
     protected $table = 'posts';
 
+    
+    protected $fillable = ['title', 'description', 'user_id', 'product_id', 'sold'];
+
+    // Eloquent Relationships
     public function user(){
         return $this->hasOne('\App\User', 'user_id');
     }

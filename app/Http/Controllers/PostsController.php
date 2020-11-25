@@ -15,9 +15,8 @@ class PostsController extends Controller
     	return view('post.index' , compact('posts'));
     }
     public function create(){
-        $users = User::all();
         $products = Product::all();
-        return view('post.create', compact('users', 'products'));
+        return view('post.create', compact('products'));
     }
 
     
@@ -29,29 +28,22 @@ class PostsController extends Controller
     
     public function edit($postId){
         $post = Post::find($postId);
-        $users = User::all();
         $products = Product::all();
-        return view('post.edit', compact('post', 'users', 'products'));
+        return view('post.edit', compact('post','products'));
     }
 
     
     public function store(){
 
         // Create a new Post
-        $validate_fields = request()->validate([
-            'title = request()->title' =>'required',
-            'description = request()->description' => 'required',
-            'user_id = User::find(request()->user_id)->id' => 'required',
-            'user = User::find(request()->user_id)->email' => 'required',
-            'product_id = Product::find(request()->product_id)->id' => 'required',
-            'image = Product::find(request()->product_id)->image' => 'required',
-            'sold = false' => 'required'
+        request()->validate([
+            'title'=>'required',
+            'description' => 'required',
+            'user_id' => 'required',
+            'product_id' => 'required'
         ]);
 
-        $post = Post::edit($validate_fields);
-        return redirect('/posts');
-
-        /**$post = new Post;
+        $post = new Post;
         $post->title = request()->title;
         $post->description = request()->description;
         $post->user_id = User::find(request()->user_id)->id;
@@ -61,26 +53,21 @@ class PostsController extends Controller
         $post->sold = false;
         $post->save();
 
-        return redirect('/posts');**/
+        return redirect('/posts');
+        
     }
 
     public function update(Post $post){
 
-
-          $validate_fields = request()->validate([
-            'title = request()->title' =>'required',
-            'description = request()->description' => 'required',
-            'user_id = User::find(request()->user_id)->id' => 'required',
-            'user = User::find(request()->user_id)->email' => 'required',
-            'product_id = Product::find(request()->product_id)->id' => 'required',
-            'image = Product::find(request()->product_id)->image' => 'required',
-            'sold = request()->sold' => 'required'
+        request()->validate([
+            'title'=>'required',
+            'description' => 'required',
+            'user_id' => 'required',
+            'product_id' => 'required',
+            'sold' => 'required'
         ]);
 
-        $post = Post::create($validate_fields);
-        return redirect('/posts'.$post->id);
-
-        /**$post->title = request()->title;
+        $post->title = request()->title;
         $post->description = request()->description;
         $post->user_id = User::find(request()->user_id)->id;
         $post->user = User::find(request()->user_id)->email;
@@ -89,7 +76,7 @@ class PostsController extends Controller
         $post->sold = request()->sold;
         $post->save();
 
-        return redirect('/posts/'.$post->id);**/
+        return redirect('/posts/'.$post->id);
     }
 
     public function delete($postId){

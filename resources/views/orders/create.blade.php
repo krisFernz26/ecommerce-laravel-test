@@ -4,7 +4,6 @@
 <div class="container">
     <div class="section">
         <h5>Create Order</h5>
-        <h5>(Note: Authentication will come later)</h5>
         <div class="row"></div>
         <div class="row">
             <form class="col s12" action="/orders" method="POST">
@@ -22,9 +21,8 @@
                 <div class="row">
                     <div class="input-field col s6">
                         <select id="user" name="user_id">
-                            @foreach ($users as $user)
-                            <option value="{{$user->id}}">{{$user->first_name}} {{$user->last_name}}</option>
-                            @endforeach
+                            <option value="{{auth()->user()->id}}">{{auth()->user()->first_name}}
+                                {{auth()->user()->last_name}}</option>
                         </select>
                         <label>User</label>
                     </div>

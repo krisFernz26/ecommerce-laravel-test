@@ -32,18 +32,23 @@ class UserTypesController extends Controller
     public function store(){
 
         // Create a new UserType
-        $userType = new UserType;
-        $userType->name = request()->name;
-        $userType->description = request()->description;
-        $userType->save();
+        $validated_fields = request()->validate([
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+
+        $userType=UserType::create($validated_fields);
 
         return redirect('/user-types');
     }
 
     public function update(UserType $userType){
-        $userType->name = request()->name;
-        $userType->description = request()->description;
-        $userType->save();
+        $validated_fields = request()->validate([
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+
+        $userType->update($validated_fields);
 
         return redirect('/user-types/'.$userType->id);
     }

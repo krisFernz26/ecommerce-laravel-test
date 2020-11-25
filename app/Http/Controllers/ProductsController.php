@@ -46,10 +46,10 @@ class ProductsController extends Controller
     		'name' => 'required',
         	'quantity' => 'required',
         	'image' => 'required',
-        	'product_type_id' => 'required|unique:ProductType'
-    	 ])
+        	'product_type_id' => 'required'
+    	 ]);
 
-        $products = Product::create($product_validation);
+        $product = Product::create($product_validation);
         return redirect ('/products');
 
         /*
@@ -71,9 +71,9 @@ class ProductsController extends Controller
     		'name' => 'required',
         	'quantity' => 'required',
         	'image' => 'required',
-        	'product_type_id' => 'required|unique:ProductType'
-    	 ])
-			 $products = Product::create($product_validation);
+        	'product_type_id' => 'required'
+    	 ]);
+			 $product->update($product_validation);
 			 return redirect('/products/'.$product->id);
 
     	/*

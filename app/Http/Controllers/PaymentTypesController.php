@@ -32,18 +32,23 @@ class PaymentTypesController extends Controller
     public function store(){
 
         // Create a new paymentType
-        $paymentType = new PaymentType;
-        $paymentType->name = request()->name;
-        $paymentType->description = request()->description;
-        $paymentType->save();
+        $validated_fields = request()->validate([
+            'name' => 'required',
+            'description' => 'required'
+            ]);
+        
+            $payment = PaymentType::create($validated_fields);
 
         return redirect('/payment-types');
     }
 
     public function update(PaymentType $paymentType){
-        $paymentType->name = request()->name;
-        $paymentType->description = request()->description;
-        $paymentType->save();
+        $validated_fields = request()->validate([
+            'name' => 'required',
+            'description' => 'required'
+            ]);
+        
+            $paymentType->update($validated_fields);
 
         return redirect('/payment-types/'.$paymentType->id);
     }

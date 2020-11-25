@@ -32,18 +32,23 @@ class ProductTypesController extends Controller
     public function store(){
 
         // Create a new productType
-        $productType = new ProductType;
-        $productType->name = request()->name;
-        $productType->description = request()->description;
-        $productType->save();
+        $validated_fields = request()->validate([
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+
+        $productType=ProductType::create($validated_fields);
 
         return redirect('/product-types');
     }
 
     public function update(ProductType $productType){
-        $productType->name = request()->name;
-        $productType->description = request()->description;
-        $productType->save();
+        $validated_fields = request()->validate([
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+
+        $productType->update($validated_fields);
 
         return redirect('/product-types/'.$productType->id);
     }

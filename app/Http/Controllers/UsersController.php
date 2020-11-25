@@ -67,7 +67,7 @@ class UsersController extends Controller
             'user_type_id' => 'required'
         ]);
 
-        $user = User::update($validated_fields);
+        $user->update($validated_fields);
 
         return redirect('/users/'.$user->id);
     }

@@ -40,11 +40,8 @@ class PaymentsController extends Controller
             'payment_date' => 'required',
             'payment_amount' => 'required'
             ]);
-        $payment = new Payment;
-        $payment->payment_type_id = PaymentType::find(request()->payment_type_id)->id;
-        $payment->payment_date = request()->payment_date;
-        $payment->payment_amount = request()->payment_amount;
-        $payment->save();
+        
+        $payment = Payment::create($validated_fields);    
 
         return redirect ('/payments'); 
 
@@ -57,10 +54,8 @@ class PaymentsController extends Controller
             'payment_date' => 'required',
             'payment_amount' => 'required'
             ]);
-        $payment->payment_type_id = PaymentType::find(request()->payment_type_id)->id;
-        $payment->payment_date = request()->payment_date;
-        $payment->payment_amount = request()->payment_amount;
-        $payment->save();
+        
+            $payment->update($validated_fields);
 
         return redirect ('/payments/'.$payment->id); 
     }

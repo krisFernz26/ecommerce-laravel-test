@@ -7,6 +7,7 @@
         <div class="row"></div>
         <div class="row">
             <form class="col s12" action="/posts" method="POST">
+                @include('layouts.errors')
                 @csrf
                 <div class="row">
                     <div class="input-field col s12">
@@ -42,7 +43,6 @@
                         </button>
                     </div>
                 </div>
-
             </form>
         </div>
     </div>

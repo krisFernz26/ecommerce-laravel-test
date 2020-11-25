@@ -23,27 +23,23 @@ class OrdersController extends Controller
 	
     public function create(){
         $quantities = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
-		$users = User::all();
 		$posts = Post::all();
-    	return view('orders.create', compact('users', 'posts', 'quantities'));
+    	return view('orders.create', compact('posts', 'quantities'));
     }
     public function edit($orderId){
         $quantities = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 		$order = Order::find($orderId);
-		$users = User::all();
 		$posts = Post::all();
 		$payments = Payment::all();
-    	return view('orders.edit', compact('order', 'users', 'posts', 'payments','quantities'));
+    	return view('orders.edit', compact('order', 'posts', 'payments','quantities'));
 	}
 
     public function store(){
 
     	//validate the form
-    	$validate_fields = request()->validate([
-    		'quantity' => 'required'
-    		'user_id' => 'required'
-    		'post_title' => 'required'
-    		'user' => 'required'
+    	request()->validate([
+    		'quantity' => 'required',
+    		'user_id' => 'required',
     		'post_id' => 'required',
     	]);
 
@@ -62,11 +58,9 @@ class OrdersController extends Controller
 
      	//validate
     	$validate_fields = request()->validate([
-    		'quantity' => 'required'
-    		'user_id' => 'required'
-    		'post_title' => 'required'
-    		'user' => 'required'
-    		'post_id' => 'required',
+    		'quantity' => 'required',
+    		'user_id' => 'required',
+    		'post_id' => 'required'
     	]);
     	
     	$order->quantity = request()->quantity;

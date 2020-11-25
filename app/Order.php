@@ -8,6 +8,9 @@ class Order extends Model
 {
 	protected $table = 'orders';
     
+    protected $fillable = ['quantity', 'user_id', 'post_id'];
+
+    // Eloquent Relationships
     public function user(){
         return $this->hasOne('\App\User', 'user_id');
     }

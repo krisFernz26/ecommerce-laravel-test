@@ -22,9 +22,8 @@
                 <div class="row">
                     <div class="input-field col s4">
                         <select id="user" name="user_id">
-                            @foreach ($users as $user)
-                            <option value="{{$user->id}}">{{$user->first_name}} {{$user->last_name}}</option>
-                            @endforeach
+                            <option value="{{auth()->user()->id}}">{{auth()->user()->first_name}}
+                                {{auth()->user()->last_name}}</option>
                         </select>
                         <label>User</label>
                     </div>
