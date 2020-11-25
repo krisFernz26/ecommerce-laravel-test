@@ -11,8 +11,8 @@ class PaymentsController extends Controller
     
     public function index()
     {
-    	$payments = Payment::all();
-    	return view ('payments.index', compact('payments'));
+        $payments = Payment::all();
+        return view ('payments.index', compact('payments'));
 
      }
      public function create()
@@ -23,7 +23,7 @@ class PaymentsController extends Controller
      public function show($paymentId)
      {
         $payment = Payment::find($paymentId);
-     	return view('payments.show', compact('payment'));
+        return view('payments.show', compact('payment'));
      }
      public function edit($paymentId)
      {
@@ -34,7 +34,12 @@ class PaymentsController extends Controller
      }
      public function store()
      {
-
+         //validate the form 
+        $validated_fields = request()->validate([
+            'payment_type_id' => 'required',
+            'payment_date' => 'required',
+            'payment_amount' => 'required'
+            ]);
         $payment = new Payment;
         $payment->payment_type_id = PaymentType::find(request()->payment_type_id)->id;
         $payment->payment_date = request()->payment_date;
@@ -46,7 +51,12 @@ class PaymentsController extends Controller
      }
      
     public function update(Payment $payment){
-
+        //validate
+        $validated_fields = request()->validate([
+            'payment_type_id' => 'required',
+            'payment_date' => 'required',
+            'payment_amount' => 'required'
+            ]);
         $payment->payment_type_id = PaymentType::find(request()->payment_type_id)->id;
         $payment->payment_date = request()->payment_date;
         $payment->payment_amount = request()->payment_amount;
