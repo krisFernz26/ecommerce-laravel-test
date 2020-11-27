@@ -11,29 +11,30 @@
                 @csrf
                 <div class="row">
                     <div class="input-field col s12">
-                        <input placeholder="Placeholder" id="title" type="text" class="validate" name="title">
+                        <input placeholder="Placeholder" id="title" type="text" class="validate" name="title" required>
                         <label for="title">Title</label>
                     </div>
                     <div class="input-field col s12">
-                        <input id="description" type="text" class="validate" name="description">
+                        <input id="description" type="text" class="validate" name="description" required>
                         <label for="description">Description</label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s6">
-                        <select id="user" name="user_id">
-                            <option value="{{auth()->user()->id}}">{{auth()->user()->first_name}}
+                    <div class="input-field col s12">
+                        <select id="user" name="user_id" required disabled>
+                            <option value="{{auth()->user()->id}}" selected>{{auth()->user()->first_name}}
                                 {{auth()->user()->last_name}}</option>
                         </select>
-                        <label>User:</label>
+                        <label>User</label>
                     </div>
-                    <div class="input-field col s6">
-                        <select id="product" name="product_id">
-                            @foreach ($products as $product)
-                            <option value="{{$product->id}}">{{$product->name}}: {{$product->quantity}}</option>
-                            @endforeach
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select id="sold" name="sold" required>
+                            <option value='1'>Yes</option>
+                            <option value='0' selected>No</option>
                         </select>
-                        <label>Product</label>
+                        <label>Sold?</label>
                     </div>
                 </div>
                 <div class="row">

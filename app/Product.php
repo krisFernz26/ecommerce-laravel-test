@@ -9,11 +9,11 @@ class Product extends Model
     protected $table = 'products';
 
     
-    protected $fillable = ['name', 'quantity', 'image', 'product_type_id'];
+    protected $fillable = ['name', 'quantity', 'image', 'product_type_id', 'post_id'];
 
     // Eloquent Relationships
-    public function product_types(){
-        return $this->hasOne('\App\ProductType', 'product_type_id');
+    public function product_type(){
+        return $this->belongsTo('\App\ProductType');
     }
 
     public function post(){

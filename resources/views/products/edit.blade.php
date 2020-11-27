@@ -18,26 +18,33 @@
 		</div>
 		<div class="row">
 			<div class="input-field col s12">
+				<input placeholder="Quantity" required id="quantity" type="number" class="validate" name="quantity"
+					value="{{$product->quantity}}">
 				<label>Quantity</label>
-				<select name="quantity" id="quantity" value="{{$product->quantity}}">
-					@foreach($quantities as $quantity)
-					<option value="{{ $quantity }}">{{ $quantity }}</option>
-					@endforeach
-				</select>
 			</div>
 		</div>
 		<div class="row">
-			<div class="input-field col s12 m6">
-				<div class="input-field col s12">
-					<input placeholder="Image Url" id="image" type="text" class="validate" name="image"
-						value="{{$product->image}}">
-					<label for="product_name">Image URL</label>
-				</div>
+			<div class="input-field col s12">
+				<input placeholder="Image Url" id="image" type="text" class="validate" name="image"
+					value="{{$product->image}}">
+				<label for="product_name">Image URL</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<select id="posts" required name="post_id">
+					<option value="" selected></option>
+					@foreach ($posts as $post)
+					<option value="{{$post->id}}">{{$post->title}}</option>
+					@endforeach
+				</select>
+				<label>Post:</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="input-field col s12">
 				<select id="product-types" name="product_type_id" value="{{$product->product_type_id}}">
+					<option value="" selected></option>
 					@foreach ($productTypes as $productType)
 					<option value="{{$productType->id}}">{{$productType->name}}: {{$productType->description}}</option>
 					@endforeach

@@ -7,9 +7,10 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th>ID</th>
 				<th>BUYER EMAIL</th>
-				<th>QUANTITY</th>
+				<th>POST</th>
+				<th>PAYMENT AMOUNT</th>
+				<th>PAYMENT TYPE</th>
 				<th>PAYMENT DATE</th>
 				<th>ACTIONS</th>
 			</tr>
@@ -17,10 +18,21 @@
 		<tbody>
 			@foreach($orders as $order)
 			<tr>
-				<td> {{ $order->id }}</td>
-				<td> {{ $order->user }}</td>
-				<td> {{ $order->quantity }}</td>
-				<td>{{$order->date_completed}}</td>
+				<td><a href="/users/{{ $order->user->id }}">{{ $order->user->first_name }}
+						{{ $order->user->last_name }}</a></td>
+				<td><a href="/posts/{{ $order->post->id }}">{{ $order->post->title }}</a></td>
+				@if ($order->payment != null)
+				<td>
+					<a href="/payments/{{$order->payment->id}}">Php {{$order->payment->payment_amount}}</a>
+				</td>
+				<td>{{$order->payment->payment_type->name}}</td>
+				<td>{{$order->payment->created_at}}</td>
+				@else
+				<td></td>
+				<td></td>
+				<td></td>
+				@endif
+
 				<td> <a href="/orders/{{ $order->id }}">Display</a>
 					|
 					<a href="/orders/{{ $order->id }}/edit">Edit</a>

@@ -10,41 +10,22 @@
                 @method('PUT')
                 @csrf
                 <div class="row">
-                    <div class="input-field col s5">
-                        <select name="quantity" id="quantity">
-                            @foreach($quantities as $quantity)
-                            <option value="{{ $quantity }}">{{ $quantity }}</option>
-                            @endforeach
-                        </select>
-                        <label>Order Quantity</label>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="input-field col s4">
-                        <select id="user" name="user_id">
-                            <option value="{{auth()->user()->id}}">{{auth()->user()->first_name}}
+                        <select id="user" name="user_id" value="{{$order->user_id}}" disabled>
+                            <option value="{{auth()->user()->id}}" selected>{{auth()->user()->first_name}}
                                 {{auth()->user()->last_name}}</option>
                         </select>
                         <label>User</label>
                     </div>
                     <div class="input-field col s4">
-                        <select id="post" name="post_id">
+                        <select id="post" name="post_id" value="{{$order->post_id}}"">
+                            <option value="" selected></option>
                             @foreach ($posts as $post)
-                            <option value="{{$post->id}}">Title: {{$post->title}}\ Quantity: {{$post->quantity}}
+                            <option value=" {{$post->id}}">Title: {{$post->title}}\ Quantity: {{$post->quantity}}
                             </option>
                             @endforeach
                         </select>
                         <label>Post</label>
-                    </div>
-                    <div class="input-field col s4">
-                        <select id="payment" name="payment_id">
-                            @foreach ($payments as $payment)
-                            <option value="{{$payment->id}}">Payment Date: {{$payment->payment_date}} <--> Php
-                                    {{$payment->payment_amount}}
-                            </option>
-                            @endforeach
-                        </select>
-                        <label>Payment</label>
                     </div>
                 </div>
                 <div class="row">

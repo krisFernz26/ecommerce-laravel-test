@@ -13,15 +13,15 @@ class User extends Authenticatable
     protected $fillable = ['first_name', 'last_name', 'email', 'password', 'address', 'user_type_id'];
 
     // Eloquent Relationships
-    public function userType(){
-        return $this->hasOne('\App\UserType', 'user_type_id');
+    public function user_type(){
+        return $this->belongsTo('\App\UserType');
     }
 
-    public function post(){
+    public function posts(){
         return $this->hasMany('\App\Post');
     }
 
-    public function order(){
+    public function orders(){
         return $this->hasMany('\App\Order');
     }
 

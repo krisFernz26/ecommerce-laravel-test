@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserType extends Model
 {
-    protected $table = 'users_type';
+    protected $table = 'user_types';
     public $timestamps = false;
 
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'description', 'user_id'];
 
     // Eloquent Relationships
-    public function user(){
-        return $this->belongsTo('App\User');
+    public function users(){
+        return $this->hasMany('App\User');
     }
 }

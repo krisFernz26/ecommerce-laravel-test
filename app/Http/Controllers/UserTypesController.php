@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\UserType;
+use App\User;
 use Illuminate\Http\Request;
 
 class UserTypesController extends Controller
@@ -13,7 +14,8 @@ class UserTypesController extends Controller
     }
 
     public function create(){
-        return view('user_types.create');
+        $users = User::all();
+        return view('user_types.create', compact('users'));
     }
 
     

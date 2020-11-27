@@ -12,7 +12,7 @@ class ProductType extends Model
     protected $fillable = ['name', 'description'];
 
     // Eloquent Relationships
-    public function product(){
-        return $this->belongsTo('App\Product');
+    public function products(){
+        return $this->hasMany('App\Product');
     }
 }

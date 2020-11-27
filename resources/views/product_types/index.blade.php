@@ -5,13 +5,26 @@
     <div class="section">
         <h5>Product Types</h5>
         <a href="/product-types/create">Create Product Type</a>
-        <ol>
-            @foreach ($productTypes as $productType)
-            <li>
-                <a target="_blank" href="/product-types/{{$productType->id}}">{{$productType->name}}</a>
-            </li>
-            @endforeach
-        </ol>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Products</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($productTypes as $productType)
+                <tr>
+                    <td>{{$productType->name}}</td>
+                    <td>{{$productType->description}}</td>
+                    <td>
+                        <a href="/product-types/{{$productType->id}}">Show Products</a>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </div>
 @endsection

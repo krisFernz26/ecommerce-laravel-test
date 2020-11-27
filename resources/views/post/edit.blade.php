@@ -23,26 +23,18 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <select id="user" name="user_id" value="{{auth()->user()->id}}">
-                            <option value="{{auth()->user()->id}}">{{auth()->user()->first_name}}
+                        <select id="user" name="user_id" value="{{auth()->user()->id}}" disabled>
+                            <option value="{{auth()->user()->id}}" selected>{{auth()->user()->first_name}}
                                 {{auth()->user()->last_name}}</option>
                         </select>
                         <label>User:</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <select id="product" name="product_id">
-                            @foreach ($products as $product)
-                            <option value="{{$product->id}}">{{$product->name}}: {{$product->quantity}}</option>
-                            @endforeach
-                        </select>
-                        <label>Product</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
                         <select id="sold" name="sold" value="{{$post->sold}}">
                             <option value='1'>Yes</option>
-                            <option value='0'>No</option>
+                            <option value='0' selected>No</option>
                         </select>
                         <label>Sold?</label>
                     </div>

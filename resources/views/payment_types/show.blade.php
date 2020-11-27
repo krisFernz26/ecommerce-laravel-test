@@ -5,13 +5,36 @@
     <div class="section">
         <div class="row">
             <div class="col s12">
-                <div class="card pink darken-1">
-                    <div class="card-content white-text">
-                        <span class="card-title">{{ $paymentType -> name }}</span>
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Payment Type: {{ $paymentType -> name }}</span>
                         <h6 style="margin-left: 1em">Payment Type ID:</h6>
                         <p style="margin-left: 2em">{{ $paymentType ->  id }}</p>
                         <h6 style="margin-left: 1em">Description:</h6>
                         <p style="margin-left: 2em">{{ $paymentType -> description }}</p>
+                        <h6>Payments:</h6>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Quantity</th>
+                                    <th>Image</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($paymentType->payments as $payment)
+                                <tr>
+                                    <td><a href="/payments/{{$payment->id}}">{{$payment->name}}</a>
+                                    </td>
+                                    <td>{{$payment->quantity}}</td>
+                                    <td><img src="{{$payment->image}}" alt="{{$payment->name}}" width="100px"></td>
+                                    <td><a href="/payments/{{$payment->id}}/edit">Edit</a> | <a
+                                            href="/payments/{{$payment->id}}/delete">Delete</a></td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                     <div class="card-action pink darken-3">
                         <a class="pink-text text-lighten-5" href="/payment-types/{{$paymentType->id}}/edit">Edit</a>

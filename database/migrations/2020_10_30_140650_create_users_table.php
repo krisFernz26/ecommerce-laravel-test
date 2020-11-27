@@ -15,10 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            
-            $table->bigInteger('user_type_id')->unsigned();
-            $table->foreign('user_type_id')->references('id')->on('user_types');
-
+            $table->unsignedInteger('user_type_id');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->unique();

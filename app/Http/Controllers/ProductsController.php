@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\ProductType;
+use App\Post;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -20,8 +21,8 @@ class ProductsController extends Controller
 
     public function create(){
         $productTypes = ProductType::all();
-        $quantities = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
-        return view('products.create', compact('productTypes', 'quantities'));
+        $posts = Post::all();
+        return view('products.create', compact('productTypes', 'posts'));
     }
 
     
@@ -34,8 +35,8 @@ class ProductsController extends Controller
     public function edit($productId){
         $product = Product::find($productId);
         $productTypes = ProductType::all();
-        $quantities = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
-        return view('products.edit', compact('product', 'productTypes', 'quantities'));
+        $posts = Post::all();
+        return view('products.edit', compact('product', 'productTypes', 'posts'));
     }
 
     
@@ -46,7 +47,8 @@ class ProductsController extends Controller
     		'name' => 'required',
         	'quantity' => 'required',
         	'image' => 'required',
-        	'product_type_id' => 'required'
+        	'product_type_id' => 'required',
+        	'post_id' => 'required'
     	 ]);
 
         $product = Product::create($product_validation);
@@ -71,7 +73,8 @@ class ProductsController extends Controller
     		'name' => 'required',
         	'quantity' => 'required',
         	'image' => 'required',
-        	'product_type_id' => 'required'
+        	'product_type_id' => 'required',
+        	'post_id' => 'required'
     	 ]);
 			 $product->update($product_validation);
 			 return redirect('/products/'.$product->id);

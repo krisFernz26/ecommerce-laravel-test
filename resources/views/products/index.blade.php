@@ -7,7 +7,8 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th>ID</th>
+				<th>TYPE</th>
+				<th>POST</th>
 				<th>NAME</th>
 				<th>QUANTITY</th>
 				<th>IMAGE</th>
@@ -17,7 +18,8 @@
 		<tbody>
 			@foreach($products as $product)
 			<tr>
-				<td> {{ $product->id }}</td>
+				<td> {{ $product->product_type->name }}</td>
+				<td> <a href="/posts/{{ $product->post->id }}">{{ $product->post->title }}</a></td>
 				<td> {{ $product->name }}</td>
 				<td> {{ $product->quantity }}</td>
 				<td> <a href="{{ $product->image }}" target="_blank"><img width="150px" height="100px"

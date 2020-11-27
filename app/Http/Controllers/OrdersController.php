@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Order;
 use App\User;
 use App\Post;
-use App\Payment;
 use Illuminate\Http\Request;
 
 class OrdersController extends Controller
@@ -22,36 +21,24 @@ class OrdersController extends Controller
 	}
 	
     public function create(){
-        $quantities = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 		$posts = Post::all();
-    	return view('orders.create', compact('posts', 'quantities'));
+    	return view('orders.create', compact('posts'));
     }
     public function edit($orderId){
-        $quantities = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 		$order = Order::find($orderId);
 		$posts = Post::all();
-		$payments = Payment::all();
-    	return view('orders.edit', compact('order', 'posts', 'payments','quantities'));
+    	return view('orders.edit', compact('order', 'posts'));
 	}
 
     public function store(){
 
     	//validate the form
-    	request()->validate([
-    		'quantity' => 'required',
+    	$validated_fields = request()->validate([
     		'user_id' => 'required',
-    		'post_id' => 'required',
+    		'post_id' => 'required'
     	]);
 
-    	$order = new Order;
-    	$order->quantity = request()->quantity;
-		$order->user_id = User::find(request()->user_id)->id;
-		$order->post_title = Post::find(request()->post_id)->title;
-        $order->user = User::find(request()->user_id)->email;
-        $order->post_id = Post::find(request()->post_id)->id;
-		$order->save();
-		
-		Post::find(request()->post_id)->sold = true;
+    	$order = Order::create($validated_fields);
 
     	return redirect('/orders');
     }
@@ -60,18 +47,11 @@ class OrdersController extends Controller
 
      	//validate
     	$validate_fields = request()->validate([
-    		'quantity' => 'required',
     		'user_id' => 'required',
     		'post_id' => 'required'
     	]);
     	
-    	$order->quantity = request()->quantity;
-        $order->user_id = User::find(request()->user_id)->id;
-        $order->user = User::find(request()->user_id)->email;
-        $order->post_id = Post::find(request()->post_id)->id;
-        $order->payment_id = Payment::find(request()->payment_id)->id;
-        $order->date_completed = Payment::find(request()->payment_id)->payment_date;
-    	$order->save();
+    	$order->update($validated_fields);
 
     	return redirect('/orders/' .$order->id);
     }

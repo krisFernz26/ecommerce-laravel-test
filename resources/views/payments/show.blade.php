@@ -4,12 +4,14 @@
     <div class="section">
         <div class="row">
             <div class="col s12">
-                <div class="card pink darken-1">
-                    <div class="card-content white-text">
+                <div class="card">
+                    <div class="card-content">
                         <h5 style="margin-left: 1em">Payment</h5>
-                        <p style="margin-left: 2em">Payment Type ID: {{ $payment ->  id }}</h6>
-                            <p style="margin-left: 2em">Payment Date: {{ $payment ->  payment_date }}</p>
-                            <p style="margin-left: 2em">Payment Amount: php {{$payment ->  payment_amount }}</h6>
+                        <h6 style="margin-left: 2em">Payment Type ID: {{ $payment->payment_type->name }}</h6>
+                        <h6 style="margin-left: 2em">Order: <a
+                                href="/orders/{{ $payment->order->id}}">{{ $payment->order->post->title }}</a></h6>
+                        <p style="margin-left: 2em">Payment Date: {{ $payment ->  created_at }}</p>
+                        <p style="margin-left: 2em">Payment Amount: php {{$payment ->  payment_amount }}</h6>
 
                     </div>
                     <div class="card-action pink darken-3">

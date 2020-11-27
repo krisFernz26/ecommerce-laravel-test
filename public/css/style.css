@@ -10,7 +10,9 @@ nav ul a,
 nav .brand-logo {
     color: #444;
 }
-
+.card a {
+    color: black;
+}
 p {
     line-height: 2rem;
 }

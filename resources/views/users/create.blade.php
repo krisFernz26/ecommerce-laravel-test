@@ -25,11 +25,11 @@
                         <input required id="email" type="email" class="validate" name="email">
                         <label for="email">Email</label>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input required id="password" type="password" class="validate" name="password">
-                            <label for="password">Password</label>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input required id="password" type="password" class="validate" name="password">
+                        <label for="password">Password</label>
                     </div>
                 </div>
                 <div class="row">
@@ -40,9 +40,10 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <select id="user-types" name="user_type_id" required>
+                        <select id="user_type" name="user_type_id" required>
+                            <option value="" selected></option>
                             @foreach ($userTypes as $userType)
-                            <option value="{{$userType->id}}">{{$userType->name}}: {{$userType->description}}</option>
+                            <option value="{{$userType->id}}">{{$userType->description}}</option>
                             @endforeach
                         </select>
                         <label>User Type:</label>

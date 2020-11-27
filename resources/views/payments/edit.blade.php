@@ -18,6 +18,17 @@
 				</div>
 			</div>
 			<div class="row">
+				<div class="input-field col s12">
+					<select id="order_ids" name="order_id" value="{{$payment->order_id}}">
+						@foreach ($orders as $order)
+						<option value="{{$order->id}}">{{$order->post->title}}
+						</option>
+						@endforeach
+					</select>
+					<label>Order:</label>
+				</div>
+			</div>
+			<div class="row">
 				<div class="input-field col s6">
 					<input type="date" class="datepicker" name="payment_date" value="{{$payment->payment_date}}">
 					<label for="payment_date">Payment Date</label>

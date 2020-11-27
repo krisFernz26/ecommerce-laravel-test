@@ -7,7 +7,8 @@
 		<div class="form-group">
 			<div class="row">
 				<div class="input-field col s12">
-					<select id="payment-types" name="payment_type_id">
+					<select id="payment-types" name="payment_type_id" required>
+						<option value="" selected></option>
 						@foreach ($paymentTypes as $paymentType)
 						<option value="{{$paymentType->id}}">{{$paymentType->name}}: {{$paymentType->description}}
 						</option>
@@ -17,13 +18,22 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="input-field col s6">
-					<input type="date" class="datepicker" name="payment_date">
-					<label for="payment_date">Payment Date</label>
+				<div class="input-field col s12">
+					<select id="order_ids" name="order_id" required>
+						<option value="" selected></option>
+						@foreach ($orders as $order)
+						<option value="{{$order->id}}">{{$order->post->title}}
+						</option>
+						@endforeach
+					</select>
+					<label>Order:</label>
 				</div>
+			</div>
+			<div class="row">
 				<div class="row">
-					<div class="input-field col s6">
-						<input placeholder="" id="payment_amount" type="number" class="validate" name="payment_amount">
+					<div class="input-field col s12">
+						<input placeholder="" id="payment_amount" type="number" class="validate" name="payment_amount"
+							required>
 						<label for="payment_amount">Payment Amount</label>
 					</div>
 				</div>

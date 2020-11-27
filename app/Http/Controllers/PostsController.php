@@ -36,22 +36,14 @@ class PostsController extends Controller
     public function store(){
 
         // Create a new Post
-        request()->validate([
+        $validated = request()->validate([
             'title'=>'required',
             'description' => 'required',
             'user_id' => 'required',
-            'product_id' => 'required'
+            'sold' => 'required'
         ]);
 
-        $post = new Post;
-        $post->title = request()->title;
-        $post->description = request()->description;
-        $post->user_id = User::find(request()->user_id)->id;
-        $post->user = User::find(request()->user_id)->email;
-        $post->product_id = Product::find(request()->product_id)->id;
-        $post->image = Product::find(request()->product_id)->image;
-        $post->sold = false;
-        $post->save();
+        $post = Post::create($validated);
 
         return redirect('/posts');
         
@@ -59,22 +51,15 @@ class PostsController extends Controller
 
     public function update(Post $post){
 
-        request()->validate([
+        $validated = request()->validate([
             'title'=>'required',
             'description' => 'required',
             'user_id' => 'required',
-            'product_id' => 'required',
             'sold' => 'required'
         ]);
 
-        $post->title = request()->title;
-        $post->description = request()->description;
-        $post->user_id = User::find(request()->user_id)->id;
-        $post->user = User::find(request()->user_id)->email;
-        $post->product_id = Product::find(request()->product_id)->id;
-        $post->image = Product::find(request()->product_id)->image;
-        $post->sold = request()->sold;
-        $post->save();
+       
+        $post->update($validated);
 
         return redirect('/posts/'.$post->id);
     }

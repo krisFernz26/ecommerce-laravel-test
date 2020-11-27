@@ -8,18 +8,18 @@ class Order extends Model
 {
 	protected $table = 'orders';
     
-    protected $fillable = ['quantity', 'user_id', 'post_id'];
+    protected $fillable = ['user_id', 'post_id'];
 
     // Eloquent Relationships
     public function user(){
-        return $this->belongsTo('\App\User', 'user_id');
+        return $this->belongsTo('\App\User');
     }
     
     public function post(){
-    	return $this->hasOne('\App\Post' , 'post_id');
+    	return $this->belongsTo('\App\Post');
     }
 
     public function payment(){
-    	return $this->hasOne('\App\Payment' , 'payment_id');
+    	return $this->hasOne('\App\Payment');
     }
 }

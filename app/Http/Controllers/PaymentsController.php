@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Payment;
+use App\Order;
 use App\PaymentType;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,9 @@ class PaymentsController extends Controller
      }
      public function create()
      {
+         $orders = Order::all();
         $paymentTypes = PaymentType::all();
-        return view('payments.create', compact('paymentTypes'));
+        return view('payments.create', compact('paymentTypes', 'orders'));
      }
      public function show($paymentId)
      {
@@ -27,9 +29,10 @@ class PaymentsController extends Controller
      }
      public function edit($paymentId)
      {
+        $orders = Order::all();
         $payment = Payment::find($paymentId);
         $paymentTypes = PaymentType::all();
-        return view('payments.edit',compact('payment', 'paymentTypes'));
+        return view('payments.edit',compact('payment', 'paymentTypes', 'orders'));
 
      }
      public function store()
@@ -37,8 +40,8 @@ class PaymentsController extends Controller
          //validate the form 
         $validated_fields = request()->validate([
             'payment_type_id' => 'required',
-            'payment_date' => 'required',
-            'payment_amount' => 'required'
+            'payment_amount' => 'required',
+            'order_id' => 'required'
             ]);
         
         $payment = Payment::create($validated_fields);    
@@ -51,8 +54,8 @@ class PaymentsController extends Controller
         //validate
         $validated_fields = request()->validate([
             'payment_type_id' => 'required',
-            'payment_date' => 'required',
-            'payment_amount' => 'required'
+            'payment_amount' => 'required',
+            'order_id' => 'required'
             ]);
         
             $payment->update($validated_fields);

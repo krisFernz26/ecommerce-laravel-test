@@ -13,8 +13,11 @@
 						<div class="card-content">
 							<h6>Product Name</h6>
 							<p style="margin-left: 1em">{{ $product->name }}</p>
-							<h6>Product Type ID</h6>
-							<p style="margin-left: 1em">{{ $product->product_type_id }}</p>
+							<h6>Posted On</h6>
+							<p style="margin-left: 1em"><a
+									href="/posts/{{ $product->post->id }}">{{ $product->post->title }}</a></p>
+							<h6>Product Type</h6>
+							<p style="margin-left: 1em">{{ $product->product_type->name }}</p>
 							<h6>Product ID</h6>
 							<p style="margin-left: 1em">{{ $product->id }}</p>
 							<h6>Quantity:</h6>

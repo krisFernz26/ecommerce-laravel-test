@@ -42,9 +42,10 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <select id="user-types" name="user_type_id" value="{{$user->user_type_id}}">
+                        <select id="user_type" name="user_type_id" required>
+                            <option value="" selected></option>
                             @foreach ($userTypes as $userType)
-                            <option value="{{$userType->id}}">{{$userType->name}}: {{$userType->description}}</option>
+                            <option value="{{$userType->id}}">{{$userType->description}}</option>
                             @endforeach
                         </select>
                         <label>User Type:</label>

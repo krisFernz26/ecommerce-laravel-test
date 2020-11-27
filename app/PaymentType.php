@@ -12,7 +12,7 @@ class PaymentType extends Model
     protected $fillable = ['name', 'description'];
 
     // Eloquent Relationships
-    public function payment(){
-        return $this->belongsTo('App\Payment');
+    public function payments(){
+        return $this->hasMany('App\Payment');
     }
 }

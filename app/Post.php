@@ -9,18 +9,18 @@ class Post extends Model
     protected $table = 'posts';
 
     
-    protected $fillable = ['title', 'description', 'user_id', 'product_id', 'sold'];
+    protected $fillable = ['title', 'description', 'user_id', 'sold'];
 
     // Eloquent Relationships
     public function user(){
         return $this->belongsTo('\App\User');
     }
     
-    public function product(){
-    	return $this->hasOne('\App\Product' , 'product_id');
+    public function products(){
+    	return $this->hasMany('\App\Product');
     }
 
     public function order(){
-        return $this->belongsTo('\App\Order', 'order_id');
+        return $this->hasOne('\App\Order');
     }
 }

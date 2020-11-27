@@ -18,8 +18,8 @@
 				@foreach($payments as $payment)
 				<tr>
 					<td>{{ $payment->id }}</td>
-					<td>{{ $payment->payment_type_id }}</td>
-					<td>{{ $payment->payment_date }}</td>
+					<td>{{ $payment->payment_type->name }}</td>
+					<td>{{ $payment->created_at }}</td>
 					<td>{{ $payment->payment_amount }}</td>
 					<td>
 						<a href="/payments/{{ $payment->id }}/">Show</a>
