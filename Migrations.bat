@@ -1,5 +1,5 @@
 
-php artisan migrate:fresh --path=database\migrations\2020_10_30_140547_create_users_type_table.php
+php artisan migrate:fresh --path=database\migrations\2020_11_27_115410_create_user_types_table.php
 
 php artisan migrate --path=database\migrations\2020_10_30_140650_create_users_table.php
 

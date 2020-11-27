@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             
             $table->bigInteger('user_type_id')->unsigned();
-            $table->foreign('user_type_id')->references('id')->on('users_type');
+            $table->foreign('user_type_id')->references('id')->on('user_types');
 
             $table->string('first_name');
             $table->string('last_name');
