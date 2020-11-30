@@ -31,6 +31,7 @@
 				@endforeach
 			</tbody>
 		</table>
+		<p class="center">{{$payments->links()}}</p>
 	</div>
 </div>
 @endsection

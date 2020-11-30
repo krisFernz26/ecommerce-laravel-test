@@ -41,6 +41,7 @@
                 @endforeach
             </tbody>
         </table>
+        <p class="center">{{$posts->links()}}</p>
     </div>
 </div>
 @endsection

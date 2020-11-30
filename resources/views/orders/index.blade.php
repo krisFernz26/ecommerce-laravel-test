@@ -43,5 +43,6 @@
 			@endforeach
 		</tbody>
 	</table>
+	<p class="center">{{$orders->links()}}</p>
 </div>
 @endsection
