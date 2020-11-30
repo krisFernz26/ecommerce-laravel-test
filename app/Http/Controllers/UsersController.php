@@ -14,11 +14,6 @@ class UsersController extends Controller
         return view('users.index', compact('users'));
     }
 
-    public function signIn(){
-
-        return view('users.sign_in');
-    }
-
     public function create(){
         $userTypes = UserType::all();
         return view('users.create', compact('userTypes'));
@@ -34,7 +29,14 @@ class UsersController extends Controller
     public function edit($userId){
         $userTypes = UserType::all();
         $user = User::find($userId);
-        return view('users.edit', compact('user', 'userTypes'));
+        if(auth()->user()->id == $userId)
+        {
+            return view('users.edit', compact('user', 'userTypes'));
+        } 
+        else
+        {
+            return redirect('/users/'.$user->id);
+        }
     }
 
     
@@ -67,18 +69,30 @@ class UsersController extends Controller
             'user_type_id' => 'required'
         ]);
 
-        $user->update($validated_fields);
-
+        if(auth()->user()->id == $user->id)
+        {
+            $user->update($validated_fields);
+        }
         return redirect('/users/'.$user->id);
     }
 
     public function delete($userId){
         $user = User::find($userId);
-        return view('users.delete', compact('user'));
+        if(auth()->user()->id == $userId)
+        {
+            return view('users.delete', compact('user'));
+        } 
+        else
+        {
+            return redirect('/users/'.$user->id);
+        }
     }
 
     public function destroy(User $user){
-        $user->delete();
+        if(auth()->user()->id == $user->id)
+        {
+            $user->delete();
+        }
         return redirect('/users');
     }
 }

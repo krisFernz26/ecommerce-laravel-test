@@ -14,11 +14,6 @@ class ProductsController extends Controller
         return view('products.index', compact('products'));
     }
 
-    public function signIn(){
-
-        return view('products.sign_in');
-    }
-
     public function create(){
         $productTypes = ProductType::all();
         $posts = Post::all();
