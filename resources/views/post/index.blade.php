@@ -27,7 +27,7 @@
                     <td> <a href="/posts/{{ $post->id }}">Show Products</a></td>
                     <td> {{ $post->created_at }}</td>
                     <td> @if ($post->sold)
-                        Not yet sold
+                        SOLD
                         @else
                         Available
                         @endif</td>

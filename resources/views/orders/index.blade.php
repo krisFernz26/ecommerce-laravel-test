@@ -7,7 +7,7 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th>BUYER EMAIL</th>
+				<th>BUYER</th>
 				<th>POST</th>
 				<th>PAYMENT AMOUNT</th>
 				<th>PAYMENT TYPE</th>

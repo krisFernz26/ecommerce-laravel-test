@@ -21,7 +21,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <select id="user" name="user_id" required disabled>
+                        <select id="user" name="user_id" required>
                             <option value="{{auth()->user()->id}}" selected>{{auth()->user()->first_name}}
                                 {{auth()->user()->last_name}}</option>
                         </select>

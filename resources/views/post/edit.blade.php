@@ -23,7 +23,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <select id="user" name="user_id" value="{{auth()->user()->id}}" disabled>
+                        <select id="user" name="user_id" value="{{auth()->user()->id}}">
                             <option value="{{auth()->user()->id}}" selected>{{auth()->user()->first_name}}
                                 {{auth()->user()->last_name}}</option>
                         </select>
