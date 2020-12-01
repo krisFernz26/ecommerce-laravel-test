@@ -17,8 +17,8 @@ class OrderTypesTableSeeder extends Seeder
 
         	['name' => 'Phone', 'description' => Phone]
         	['name' => 'Book', 'description' => Book]
-
-
         ]
+
+        DB:table('order_types')->insert($order_types);
     }
 }
