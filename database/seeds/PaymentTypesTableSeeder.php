@@ -11,6 +11,7 @@ class PaymentTypesTableSeeder extends Seeder
      */
     public function run()
     {
+    	
        $payment_types = [
        		['name' => 'Cash', 'description' => 'Cash'],
        		['name' => 'Card', 'description' => 'Card'],
