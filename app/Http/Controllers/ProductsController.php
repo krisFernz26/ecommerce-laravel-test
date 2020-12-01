@@ -13,11 +13,6 @@ class ProductsController extends Controller
         return view('products.index', compact('products'));
     }
 
-    public function signIn(){
-
-        return view('products.sign_in');
-    }
-
     public function create(){
         $productTypes = ProductType::all();
         $quantities = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
@@ -40,26 +35,25 @@ class ProductsController extends Controller
 
     
     public function store(){
-
         // Create a new Product
-        $products = new Product;
-        $products->name = request()->name;
-        $products->quantity = request()->quantity;
-        $products->image = request()->image;
-        $products->product_type_id = ProductType::find(request()->product_type_id)->id;
-        $products->save();
-
+        $product_validation = request()->validate([
+            'name' => 'required',
+            'quantity' => 'required',
+            'image' => 'required',
+            'product_type_id' => 'required'
+        ]);
+        $product = Product::create($product_validation);
         return redirect('/products');
     }
 
     public function update(Product $product){
-
-        $product->name = request()->name;
-        $product->quantity = request()->quantity;
-        $product->image = request()->image;
-        $product->product_type_id = ProductType::find(request()->product_type_id)->id;
-        $product->save();
-
+         $product_validation = request()->validate([
+            'name' => 'required',
+            'quantity' => 'required',
+            'image' => 'required',
+            'product_type_id' => 'required'
+        ]);
+        $product = Product::update($product_validation);
         return redirect('/products/'.$product->id);
     }
 
