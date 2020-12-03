@@ -17,11 +17,9 @@ class PaymentTypesFeatureTest extends TestCase
     {
     	$this->createPaymentType();
     	factory(\App\PaymentType::class)->create();
-    	$this->createPaymentTypes()
+    	$this->createPaymentTypes();
     	$payment =factory(\App\Payment::class)->create();
     	$response = $this->get('/payments');
     	$this->assertSee($payment->name);
     }
-
-    		];
-    	});
+}

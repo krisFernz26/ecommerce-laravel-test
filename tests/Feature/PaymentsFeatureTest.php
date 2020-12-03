@@ -60,7 +60,7 @@ class PaymentsFeatureTest extends TestCase
         $user = factory(\App\User::class)->create();
         $this->loginUser($user);
         $this->createPaymentTypes();
-        $this->seed(PaymentTypesTableSeeder::class)
+        $this->seed(PaymentTypesTableSeeder::class);
         $new_payment = factory(\App\Payment::class)->make()->toArray();
 
         //when
@@ -89,7 +89,7 @@ class PaymentsFeatureTest extends TestCase
 
         //when
             //update to route /payments/{payment}
-            $response = $this->update('/payments', .$payment->id, $update_payment);
+            $response = $this->update('/payments/'.$payment->id, $update_payment);
         //then
             //i expect to be redirected to /payments
             //i expect to see the payment in the database
@@ -113,7 +113,7 @@ class PaymentsFeatureTest extends TestCase
 
         //when
             //update to delete /payments/{payment}
-            $response = $this->destroy('/payments', .$payment->id, $delete_payment);
+            $response = $this->destroy('/payments/'.$payment->id, $delete_payment);
         //then
             //i expect to be redirected to /payments
             //i expect to see the payment in the database
