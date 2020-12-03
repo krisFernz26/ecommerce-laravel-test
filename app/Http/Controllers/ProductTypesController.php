@@ -30,7 +30,6 @@ class ProductTypesController extends Controller
 
     
     public function store(){
-
         // Create a new productType
         $validated_fields = request()->validate([
             'name' => 'required',
