@@ -14,12 +14,18 @@
                     <h4> Available</h4>
                     @endif
                     <h6>Seller Email</h6>
-                    <p style="margin-left: 1em">{{ $post->user->email }}</p>
+                    <p>{{ $post->user->email }}</p>
                     <h6>Description</h6>
-                    <p style="margin-left: 1em">{{ $post->description }}</p>
+                    <p>{{ $post->description }}</p>
+                    <br>
+                    @if($post->user->id != auth()->user()->id)
+                    <h6><a href="/orders/create">Order Now!</a></h6>
+                    @endif
                     <br>
                     <h5>Products</h5>
-                    <a href="/products/create">Add a product</a>
+                    @if($post->user->id == auth()->user()->id)
+                    <h6><a href="/products/create">Add a product</a></h6>
+                    @endif
                     <table>
                         <thead>
                             <tr>
@@ -43,12 +49,14 @@
                         </tbody>
                     </table>
                 </div>
+                @if($post->user->id == auth()->user()->id)
                 <div class="card-action">
                     <a href="/posts/{{$post->id}}/edit">EDIT</a>
                 </div>
                 <div class="card-action">
                     <a href="/posts/{{$post->id}}/delete">DELETE</a>
                 </div>
+                @endif
             </div>
         </div>
     </div>

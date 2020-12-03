@@ -13,13 +13,13 @@ class PaymentsController extends Controller
     
     public function index()
     {
-        $payments = Payment::paginate(10);
+        $payments = Payment::orderBy('updated_at', 'DESC')->paginate(10);
         return view ('payments.index', compact('payments'));
 
      }
      public function create()
      {
-         $orders = Order::all();
+        $orders = Order::all()->where('user_id', '=', auth()->user()->id);
         $paymentTypes = PaymentType::all();
         return view('payments.create', compact('paymentTypes', 'orders'));
      }
@@ -30,7 +30,7 @@ class PaymentsController extends Controller
      }
      public function edit($paymentId)
      {
-        $orders = Order::all();
+        $orders = Order::all()->where('user_id', '=', auth()->user()->id);
         $payment = Payment::find($paymentId);
         $paymentTypes = PaymentType::all();
         return view('payments.edit',compact('payment', 'paymentTypes', 'orders'));
@@ -47,7 +47,7 @@ class PaymentsController extends Controller
         
         $payment = Payment::create($validated_fields);    
 
-        return redirect ('/payments'); 
+        return redirect ('/users/'.auth()->user()->id); 
 
      }
      

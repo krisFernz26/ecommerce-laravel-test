@@ -22,7 +22,7 @@ class AuthController extends Controller
 
         if(Auth::attempt($credentials)){
             $products = Product::all();
-            return redirect('/');
+            return redirect('/posts');
         }
 
         return back()->withErrors([

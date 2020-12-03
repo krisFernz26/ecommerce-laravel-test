@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="/css/app.css" type="text/css" rel="stylesheet" />
 
     <style>
         body {
@@ -30,9 +31,14 @@
 </head>
 
 <body>
+    @if(auth() -> user())
     <nav class="white" role="navigation">
         <div class="nav-wrapper container ">
-            <!-- <a id="logo-container" href="/" class="brand-logo">Group 7</a> -->
+            @if (auth()->user() == null)
+            <a id="logo-container" href="/" class="brand-logo">Group 7</a>
+            @else
+            <a id="logo-container" href="/posts" class="brand-logo">Group 7</a>
+            @endif
             <ul class="right hide-on-med-and-down">
                 @include('layouts.navigation')
 
@@ -46,11 +52,12 @@
 
         </div>
     </nav>
+    @endif
 
     <main>
         @yield('content')
     </main>
-
+    @if(auth() -> user())
     <footer class="page-footer pink darken-3">
         <div class="container">
             <div class="row">
@@ -68,7 +75,7 @@
             </div>
         </div>
     </footer>
-
+    @endif
 
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

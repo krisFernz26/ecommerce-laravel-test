@@ -4,7 +4,7 @@
 <div class="container">
 	<h5>All Orders</h5>
 	<a href="/orders/create">Create a new order</a>
-	<table class="table">
+	<table class="table centered highlight">
 		<thead>
 			<tr>
 				<th>BUYER</th>

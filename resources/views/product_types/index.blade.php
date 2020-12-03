@@ -9,7 +9,6 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Description</th>
                     <th>Products</th>
                 </tr>
             </thead>
@@ -17,7 +16,6 @@
                 @foreach ($productTypes as $productType)
                 <tr>
                     <td>{{$productType->name}}</td>
-                    <td>{{$productType->description}}</td>
                     <td>
                         <a href="/product-types/{{$productType->id}}">Show Products</a>
                     </td>

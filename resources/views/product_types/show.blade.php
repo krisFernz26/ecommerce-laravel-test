@@ -5,13 +5,11 @@
     <div class="section">
         <div class="row">
             <div class="col s12">
-                <div class="card">
+                <div class="card" style="width: 80%">
                     <div class="card-content">
                         <span class="card-title">Product Type: {{ $productType -> name }}</span>
-                        <h6 style="margin-left: 1em">Product Type ID:</h6>
-                        <p style="margin-left: 2em">{{ $productType ->  id }}</p>
-                        <h6 style="margin-left: 1em">Description:</h6>
-                        <p style="margin-left: 2em">{{ $productType -> description }}</p>
+                        <h6>Description:</h6>
+                        <p>{{ $productType -> description }}</p>
                         <h6>Products:</h6>
                         <table>
                             <thead>

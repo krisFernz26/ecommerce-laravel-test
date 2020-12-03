@@ -20,9 +20,8 @@
 			<div class="row">
 				<div class="input-field col s12">
 					<select id="order_ids" name="order_id" required>
-						<option value="" selected></option>
 						@foreach ($orders as $order)
-						<option value="{{$order->id}}">{{$order->post->title}}
+						<option value="{{$order->id}}" selected>{{$order->post->title}}
 						</option>
 						@endforeach
 					</select>

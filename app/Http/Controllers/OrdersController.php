@@ -11,7 +11,7 @@ class OrdersController extends Controller
 {
     public function index(){
     	//get all the orders
-    	$orders = Order::paginate(10);
+    	$orders = Order::orderBy('updated_at', 'DESC')->paginate(10);
     	return view('orders.index', compact('orders'));
 	}
 	
@@ -26,7 +26,7 @@ class OrdersController extends Controller
     }
     public function edit($orderId){
 		$order = Order::find($orderId);
-		$posts = Post::all();
+		$posts =  Post::all()->orderBy('updated_at', 'DESC');
     	return view('orders.edit', compact('order', 'posts'));
 	}
 
@@ -38,9 +38,11 @@ class OrdersController extends Controller
     		'post_id' => 'required'
     	]);
 
-    	$order = Order::create($validated_fields);
+		$order = Order::create($validated_fields);
+		$post = Post::where('id', request()->post_id);
+		$post->update(['sold' => 1]);
 
-    	return redirect('/orders');
+    	return redirect('/payments/create');
     }
 
      public function update(Order $order){

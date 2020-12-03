@@ -5,34 +5,32 @@
     <div class="section">
         <div class="row">
             <div class="col s12">
-                <div class="card" style="width: 80%">
+                <div class="card" style="width: 100%">
                     <div class="card-content">
                         <span class="card-title">{{ $user->first_name }} {{ $user->last_name }}</span>
-                        <h6 style="margin-left: 1em">Email:</h6>
-                        <p style="margin-left: 2em">{{ $user->email }}</p>
-                        <h6 style="margin-left: 1em">Address:</h6>
-                        <p style="margin-left: 2em">{{ $user->address }}</p>
-                        <h6 style="margin-left: 1em">User Type:</h6>
-                        <p style="margin-left: 2em">{{ $user->user_type->name }}</p>
+                        <h6>Email:</h6>
+                        <p>{{ $user->email }}</p>
+                        <h6>Address:</h6>
+                        <p>{{ $user->address }}</p>
+                        <h6>User Type:</h6>
+                        <p>{{ $user->user_type->name }}</p>
+                        <br>
+                        <a href="/products/create">Add a Product</a>
                         <br>
                         <h5>Posts</h5>
-                        <table>
+                        <a href="/posts/create">Add a Post</a>
+                        <table class="highlight">
                             <thead>
                                 <tr>
                                     <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Products</th>
                                     <th>Date Posted</th>
                                     <th>Status</th>
-                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($user->posts as $post)
                                 <tr>
-                                    <td>{{$post->title}}</td>
-                                    <td>{{$post->description}}</td>
-                                    <td><a href="/posts/{{$post->id}}">Show Products</a></td>
+                                    <td><a href="/posts/{{$post->id}}">{{$post->title}}</a></td>
                                     <td>{{$post->created_at}}</td>
                                     <td>
                                         @if ($post->sold)
@@ -40,11 +38,25 @@
                                         @else
                                         Available
                                         @endif</td>
-                                    <td> <a href="/posts/{{ $post->id }}">Display</a>
-                                        |
-                                        <a href="/posts/{{ $post->id }}/edit">Edit</a>
-                                        |
-                                        <a href="/posts/{{ $post->id }}/delete">Delete</a>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <br>
+                        <h5>Orders</h5>
+                        <a href="/orders/create">Add an Order</a>
+                        <table class="highlight">
+                            <thead>
+                                <tr>
+                                    <th>Post Title</th>
+                                    <th>Payment Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($user->orders as $order)
+                                <tr>
+                                    <td><a href="/posts/{{$order->post->id}}">{{$order->post->title}}</a></td>
+                                    <td><a href="/payments/{{$order->payment->id}}">{{$order->payment->updated_at}}</a>
                                     </td>
                                 </tr>
                                 @endforeach

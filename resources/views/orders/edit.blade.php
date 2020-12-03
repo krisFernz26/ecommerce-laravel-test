@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="section">
-        <h5>Edit User Type</h5>
+        <h5>Edit Order</h5>
         <div class="row"></div>
         <div class="row">
             <form class="col s12" action="/orders/{{$order->id}}" method="POST">

@@ -12,16 +12,13 @@
 						</div>
 						<div class="card-content">
 							<h6>Product Name</h6>
-							<p style="margin-left: 1em">{{ $product->name }}</p>
+							<p>{{ $product->name }}</p>
 							<h6>Posted On</h6>
-							<p style="margin-left: 1em"><a
-									href="/posts/{{ $product->post->id }}">{{ $product->post->title }}</a></p>
+							<p><a href="/posts/{{ $product->post->id }}">{{ $product->post->title }}</a></p>
 							<h6>Product Type</h6>
-							<p style="margin-left: 1em">{{ $product->product_type->name }}</p>
-							<h6>Product ID</h6>
-							<p style="margin-left: 1em">{{ $product->id }}</p>
+							<p>{{ $product->product_type->name }}</p>
 							<h6>Quantity:</h6>
-							<p style="margin-left: 1em">{{ $product->quantity }}</p>
+							<p>{{ $product->quantity }}</p>
 						</div>
 						<div class="card-action">
 							<a href="/products/{{$product->id}}/edit">EDIT</a>

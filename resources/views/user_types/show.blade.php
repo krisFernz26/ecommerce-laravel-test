@@ -8,8 +8,8 @@
                 <div class="card">
                     <div class="card-content">
                         <span class="card-title">User Type: {{ $userType -> name }}</span>
-                        <h6 style="margin-left: 1em">Description:</h6>
-                        <p style="margin-left: 2em">{{ $userType -> description }}</p>
+                        <h6>Description:</h6>
+                        <p>{{ $userType -> description }}</p>
                         <h6>Users:</h6>
                         <table>
                             <thead>

@@ -11,7 +11,7 @@ class PostsController extends Controller
 {
     public function index()
     {
-    	$posts = Post::paginate(10);
+    	$posts = Post::where('sold', '=', '0')->orderBy('updated_at', 'DESC')->paginate(10);
     	return view('post.index' , compact('posts'));
     }
     public function create(){
@@ -71,6 +71,8 @@ class PostsController extends Controller
 
     public function destroy(Post $post){
         $post->delete();
+        $order = Order::where('post_id', '=', $post->id);
+        $order->delete();
         return redirect('/posts');
     }
 }

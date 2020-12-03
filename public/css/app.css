@@ -1,0 +1,14 @@
+.card a {
+    color: cornflowerblue;
+    text-decoration: underline;
+}
+
+.sidenav-trigger {
+    color: #d603a8;
+}
+.card h6 {
+    font-weight: 600;
+}
+.card p {
+    margin-left: 1rem;
+}

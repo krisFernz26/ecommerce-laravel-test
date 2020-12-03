@@ -54,7 +54,7 @@ class UsersController extends Controller
 
         $user = User::create($validated_fields);
 
-        return redirect('/users');
+        return redirect('/login');
     }
 
     public function update(User $user){

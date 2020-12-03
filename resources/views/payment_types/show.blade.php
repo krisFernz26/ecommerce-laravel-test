@@ -8,10 +8,10 @@
                 <div class="card">
                     <div class="card-content">
                         <span class="card-title">Payment Type: {{ $paymentType -> name }}</span>
-                        <h6 style="margin-left: 1em">Payment Type ID:</h6>
-                        <p style="margin-left: 2em">{{ $paymentType ->  id }}</p>
-                        <h6 style="margin-left: 1em">Description:</h6>
-                        <p style="margin-left: 2em">{{ $paymentType -> description }}</p>
+                        <h6>Payment Type ID:</h6>
+                        <p>{{ $paymentType ->  id }}</p>
+                        <h6>Description:</h6>
+                        <p>{{ $paymentType -> description }}</p>
                         <h6>Payments:</h6>
                         <table>
                             <thead>
