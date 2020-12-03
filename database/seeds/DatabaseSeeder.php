@@ -15,11 +15,11 @@ class DatabaseSeeder extends Seeder
         	UserTypesTableSeeder::class,
         	UsersTableSeeder::class,
         	ProductTypesTableSeeder::class,
-        	ProductsTableSeeder::class,
+            ProductsTableSeeder::class,
+            PostsTableSeeder::class,
         	PaymentTypesTableSeeder::class,
-        	PaymentsTableSeeder::class
-     
-
+            PaymentsTableSeeder::class,
+            OrdersTableSeeder::class
 
         	]);
     }

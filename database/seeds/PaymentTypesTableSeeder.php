@@ -13,9 +13,9 @@ class PaymentTypesTableSeeder extends Seeder
     {
     	
        $payment_types = [
-       		['name' => 'Cash', 'description' => 'Cash'],
+       		['name' => 'Cash', 'description' => 'Cash on Delivery'],
        		['name' => 'Card', 'description' => 'Card'],
-       		['name' => 'Online Payment', 'description' => 'Online Payment']
+       		['name' => 'Bank Transfer', 'description' => 'Bank Transfer']
        		
        ];
        DB::table('payment_types')->insert($payment_types);

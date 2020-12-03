@@ -10,8 +10,8 @@ $factory->define(Product::class, function (Faker $faker) {
 
     	'product_type_id' => mt_rand(1,5),
     	'post_id' => mt_rand(1,20),
-    	'name' => $faker->name,
+    	'name' => $faker->word,
     	'quantity' => mt_rand(0, 20),
-    	'image' => $faker->imageUrl(); 
+    	'image' => $faker->imageUrl()
     ];
 });

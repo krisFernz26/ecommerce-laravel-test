@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ProductsTypesTableSeeder extends Seeder
+class ProductTypesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,7 +19,6 @@ class ProductsTypesTableSeeder extends Seeder
         	['name' => 'Electronics', 'description' => 'Electronics']
         ];
 
-        DB:table('product_types')->insert('$product_types');
+        DB::table('product_types')->insert($product_types);
     }
 }
- 

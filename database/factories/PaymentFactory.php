@@ -10,8 +10,8 @@ $factory->define(Payment::class, function (Faker $faker) {
     	
     	
     	'payment_type_id' => mt_rand(1,3),
-    	'payment_date'=>$faker->dateTime(),
-    	'payment_amount' =>$faker->numberBetween($min = 1000, $max = 50,000)
+    	'payment_amount' => mt_rand(0, 100000),
+		'order_id' => mt_rand(1, 50)
 
     ];
 });

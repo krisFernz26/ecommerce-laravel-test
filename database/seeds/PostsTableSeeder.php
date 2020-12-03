@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class OrdersTableSeeder extends Seeder
+class PostsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class OrdersTableSeeder extends Seeder
      */
     public function run()
     {
-        $orders = factory(\App\Order::class,50)->create();
+        $posts = factory(\App\Post::class, 50)->create();
     }
 }
